@@ -1,0 +1,67 @@
+﻿@model TruckRegistration.Web.ViewModels.TruckViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TruckViewModel</h4>
+<hr />
+<<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="modal-body">
+            @using (Html.BeginForm(actionName: "edit", controllerName: "home", method: FormMethod.Post))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.TruckId)
+                @Html.HiddenFor(model => model.Model)
+                <div class="form-group">
+                    @Html.LabelFor(x => x.TruckModels, new { @class = "col-form-label" }):
+                    @Html.DropDownList("TruckModelId", new SelectList(Model.TruckModels, "TruckModelId", "ModelDescription",
+                    new { TruckModelId = 0, ModelDescription = "Selecione" }), new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.NameTruck, new { @class = "col-form-label" }):
+                    @Html.EditorFor(x => x.NameTruck, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name Truck" } })
+                    <span>
+                        @Html.ValidationMessageFor(x => x.YearManufacture, null, new { @class = "text-danger" })
+                    </span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.YearManufacture, new { @class = "col-form-label" }):
+                    @Html.EditorFor(x => x.YearManufacture, new { htmlAttributes = new { @class = "form-control", @placeholder = "Year Manufacture", @disabled = "disabled" } })
+                    <span>
+                        @Html.ValidationMessageFor(x => x.YearManufacture, null, new { @class = "text-danger" })
+                    </span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.YearModel, new { @class = "col-form-label" }):
+                    @Html.EditorFor(x => x.YearModel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Year Model" } })
+                    <span>
+                        @Html.ValidationMessageFor(x => x.YearModel, null, new { @class = "text-danger" })
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Edit" />
+                </div>
+            }
+        </div>
+        @if (!string.IsNullOrEmpty(@ViewBag.Message))
+        {
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                @ViewBag.Message
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

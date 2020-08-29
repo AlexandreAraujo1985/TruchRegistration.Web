@@ -1,0 +1,27 @@
+﻿@{ var ano = DateTime.Now.Year; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <title>Truck Resgistration</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                &copy; Truck Registration - @ano
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+</body>
+</html>

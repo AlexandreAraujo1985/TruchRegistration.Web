@@ -1,0 +1,55 @@
+﻿@model TruckRegistration.Web.ViewModels.TruckViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h4>TruckViewModel</h4>
+        <hr />
+        @using (Html.BeginForm(actionName: "delete", controllerName: "home", method: FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.TruckId)
+            @Html.HiddenFor(model => model.TruckModelId)
+            @Html.HiddenFor(model => model.YearModel)
+            @Html.HiddenFor(model => model.Model)
+            @Html.HiddenFor(model => model.NameTruck)
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NameTruck)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NameTruck)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Model.ModelDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Model.ModelDescription)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.YearManufacture)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.YearManufacture)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.YearModel)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.YearModel)
+                </dd>
+            </dl>
+            <div>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+    <div class="col-md-4"></div>
+</div>

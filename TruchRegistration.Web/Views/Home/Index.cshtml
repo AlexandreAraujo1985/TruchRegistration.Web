@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TruckRegistration.Web.ViewModels.TruckViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <p>
+            <div>
+                @using (Html.BeginForm(actionName: "create", controllerName: "home", FormMethod.Get))
+                {
+                    <div class="mt-3">
+                        <input value="Sign Up" type="submit" class="btn btn btn-success" />
+                    </div>
+                }
+            </div>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NameTruck)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model.ModelDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YearManufacture)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YearModel)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameTruck)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model.ModelDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YearManufacture)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YearModel)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TruckId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TruckId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TruckId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
